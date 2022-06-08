@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4210  ",
+    "build-webgrpc": "protoc -I=. src/app/protos/action.proto  --js_out=import_style=typescript:. --grpc-web_out=import_style=typescript,mode=grpcwebtext:.",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -18,7 +19,11 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "google-protobuf": "^3.20.1",
+    "grpc-web": "1.3.1",
     "rxjs": "~6.6.0",
+    "ts-protoc-gen": "^0.15.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -26,6 +31,7 @@
     "@angular-devkit/build-angular": "~12.2.13",
     "@angular/cli": "~12.2.13",
     "@angular/compiler-cli": "~12.2.0",
+    "@types/google-protobuf": "^3.15.6",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",
