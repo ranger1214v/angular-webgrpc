@@ -1,4 +1,17 @@
-
-
-
-<input type="text" >
+<div class="main-box">
+  <div #listBox class="list-box">
+    <div class="list-item" *ngFor="let item of messageList$ | async;let i = index;">
+      {{item.name}}
+      <img #loadImage [src]="'/assets/load.png?v=' + i " alt (load)="scrollToBottom(listBox)" />
+    </div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label class="_benSend">發送訊息</mat-label>
+    <button type="button" mat-icon-button matSuffix matTooltip="點擊以發送訊息"
+      (click)="btnSendMessage(inputSendMessage.value);inputSendMessage.value = '';">
+      <mat-icon>send</mat-icon>
+    </button>
+    <textarea #inputSendMessage matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+      cdkAutosizeMaxRows="3" placeholder="發送訊息"></textarea>
+  </mat-form-field>
+</div>
