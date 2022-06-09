@@ -10,6 +10,9 @@ export class Item extends jspb.Message {
   getPrice(): number;
   setPrice(value: number): Item;
 
+  getMessage(): string;
+  setMessage(value: string): Item;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Item.AsObject;
   static toObject(includeInstance: boolean, msg: Item): Item.AsObject;
@@ -22,6 +25,7 @@ export namespace Item {
   export type AsObject = {
     name: string,
     price: number,
+    message: string,
   }
 }
 

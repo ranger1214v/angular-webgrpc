@@ -122,7 +122,8 @@ proto.AiiiGRPC.Item.prototype.toObject = function(opt_includeInstance) {
 proto.AiiiGRPC.Item.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    price: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    price: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    message: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -167,6 +168,10 @@ proto.AiiiGRPC.Item.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {number} */ (reader.readInt32());
       msg.setPrice(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMessage(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -210,6 +215,13 @@ proto.AiiiGRPC.Item.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -246,6 +258,24 @@ proto.AiiiGRPC.Item.prototype.getPrice = function() {
  */
 proto.AiiiGRPC.Item.prototype.setPrice = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string message = 3;
+ * @return {string}
+ */
+proto.AiiiGRPC.Item.prototype.getMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AiiiGRPC.Item} returns this
+ */
+proto.AiiiGRPC.Item.prototype.setMessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
