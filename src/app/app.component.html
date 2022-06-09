@@ -9,7 +9,7 @@
       ><span>{{ item.message }}</span>
       <img
         #loadImage
-        [src]="'https://fakeimg.pl/1x1/v=' + i"
+        [src]="'https://fakeimg.pl/1x1/?v=' + i"
         alt
         (load)="scrollToBottom(listBox)"
       />
