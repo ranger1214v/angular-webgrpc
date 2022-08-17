@@ -38,7 +38,34 @@ type ToDoServiceBidirectionalStreamingAsyncList = {
   readonly requestStream: true;
   readonly responseStream: true;
   readonly requestType: typeof proto_action_pb.Item;
-  readonly responseType: typeof proto_action_pb.List;
+  readonly responseType: typeof proto_action_pb.Item;
+};
+
+type ToDoServiceUnaryAddMemberRecord = {
+  readonly methodName: string;
+  readonly service: typeof ToDoService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof proto_action_pb.Member;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
+type ToDoServiceClientStreamingAddLog = {
+  readonly methodName: string;
+  readonly service: typeof ToDoService;
+  readonly requestStream: true;
+  readonly responseStream: false;
+  readonly requestType: typeof proto_action_pb.Log;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
+type ToDoServiceServerStreamingSubMemberRecord = {
+  readonly methodName: string;
+  readonly service: typeof ToDoService;
+  readonly requestStream: false;
+  readonly responseStream: true;
+  readonly requestType: typeof google_protobuf_empty_pb.Empty;
+  readonly responseType: typeof proto_action_pb.Member;
 };
 
 export class ToDoService {
@@ -47,6 +74,9 @@ export class ToDoService {
   static readonly ClientStreamingAddItem: ToDoServiceClientStreamingAddItem;
   static readonly ServerStreamingSubList: ToDoServiceServerStreamingSubList;
   static readonly BidirectionalStreamingAsyncList: ToDoServiceBidirectionalStreamingAsyncList;
+  static readonly UnaryAddMemberRecord: ToDoServiceUnaryAddMemberRecord;
+  static readonly ClientStreamingAddLog: ToDoServiceClientStreamingAddLog;
+  static readonly ServerStreamingSubMemberRecord: ToDoServiceServerStreamingSubMemberRecord;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -92,6 +122,17 @@ export class ToDoServiceClient {
   ): UnaryResponse;
   clientStreamingAddItem(metadata?: grpc.Metadata): RequestStream<proto_action_pb.Item>;
   serverStreamingSubList(requestMessage: proto_action_pb.Filter, metadata?: grpc.Metadata): ResponseStream<proto_action_pb.Item>;
-  bidirectionalStreamingAsyncList(metadata?: grpc.Metadata): BidirectionalStream<proto_action_pb.Item, proto_action_pb.List>;
+  bidirectionalStreamingAsyncList(metadata?: grpc.Metadata): BidirectionalStream<proto_action_pb.Item, proto_action_pb.Item>;
+  unaryAddMemberRecord(
+    requestMessage: proto_action_pb.Member,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  unaryAddMemberRecord(
+    requestMessage: proto_action_pb.Member,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  clientStreamingAddLog(metadata?: grpc.Metadata): RequestStream<proto_action_pb.Log>;
+  serverStreamingSubMemberRecord(requestMessage: google_protobuf_empty_pb.Empty, metadata?: grpc.Metadata): ResponseStream<proto_action_pb.Member>;
 }
 

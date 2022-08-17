@@ -20,9 +20,28 @@ message Filter {
     string opStr = 3;
 }
 
+
+message Member { // member
+    string name = 1;
+    int32 type = 2;
+    string timestamp = 3;
+}
+
+message Log {
+  string category = 1;
+  string action = 2;
+  string label = 3;
+  string value = 4;
+}
+
+
 service ToDoService {
     rpc UnaryAddItem (Item) returns (List);
     rpc ClientStreamingAddItem (stream Item) returns (google.protobuf.Empty);
     rpc ServerStreamingSubList (Filter) returns (stream Item);
-    rpc BidirectionalStreamingAsyncList (stream Item) returns (stream List);
+    rpc BidirectionalStreamingAsyncList (stream Item) returns (stream Item);
+
+    rpc UnaryAddMemberRecord (Member) returns (google.protobuf.Empty);
+    rpc ClientStreamingAddLog (stream Log) returns (google.protobuf.Empty);
+    rpc ServerStreamingSubMemberRecord (google.protobuf.Empty) returns (stream Member);
 }

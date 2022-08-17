@@ -101,5 +101,70 @@ export class ToDoServiceClient {
       this.methodDescriptorServerStreamingSubList);
   }
 
+  methodDescriptorUnaryAddMemberRecord = new grpcWeb.MethodDescriptor(
+    '/AiiiGRPC.ToDoService/UnaryAddMemberRecord',
+    grpcWeb.MethodType.UNARY,
+    proto_action_pb.Member,
+    google_protobuf_empty_pb.Empty,
+    (request: proto_action_pb.Member) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  unaryAddMemberRecord(
+    request: proto_action_pb.Member,
+    metadata: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  unaryAddMemberRecord(
+    request: proto_action_pb.Member,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  unaryAddMemberRecord(
+    request: proto_action_pb.Member,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/AiiiGRPC.ToDoService/UnaryAddMemberRecord',
+        request,
+        metadata || {},
+        this.methodDescriptorUnaryAddMemberRecord,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/AiiiGRPC.ToDoService/UnaryAddMemberRecord',
+    request,
+    metadata || {},
+    this.methodDescriptorUnaryAddMemberRecord);
+  }
+
+  methodDescriptorServerStreamingSubMemberRecord = new grpcWeb.MethodDescriptor(
+    '/AiiiGRPC.ToDoService/ServerStreamingSubMemberRecord',
+    grpcWeb.MethodType.SERVER_STREAMING,
+    google_protobuf_empty_pb.Empty,
+    proto_action_pb.Member,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    proto_action_pb.Member.deserializeBinary
+  );
+
+  serverStreamingSubMemberRecord(
+    request: google_protobuf_empty_pb.Empty,
+    metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<proto_action_pb.Member> {
+    return this.client_.serverStreaming(
+      this.hostname_ +
+        '/AiiiGRPC.ToDoService/ServerStreamingSubMemberRecord',
+      request,
+      metadata || {},
+      this.methodDescriptorServerStreamingSubMemberRecord);
+  }
+
 }
 

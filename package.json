@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~13.3.11",
     "@angular/router": "~13.3.11",
     "@improbable-eng/grpc-web": "^0.15.0",
+    "moment": "2.29.4",
     "google-protobuf": "^3.20.1",
     "grpc-web": "1.3.1",
     "rxjs": "~6.6.0",

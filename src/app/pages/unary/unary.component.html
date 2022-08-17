@@ -1,0 +1,20 @@
+
+<mat-card>
+  <mat-card-title>手動新增成員出入記錄</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>人員</mat-label>
+      <mat-select placeholder="選擇成員" [(ngModel)]="name">
+        <mat-option value="">---請選擇---</mat-option>
+        <mat-option [value]="item" *ngFor="let item of memberList">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="_btnSendMemberRecord()">新增</button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+

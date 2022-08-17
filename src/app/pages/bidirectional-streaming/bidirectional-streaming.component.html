@@ -1,0 +1,20 @@
+<h1>用同一條 streaming 完成聊天室窗 </h1>
+
+
+<div class="main-box">
+  <div #listBox class="list-box">
+    <div class="list-item" *ngFor="let item of messageList$ | async;let i = index;" [ngClass]="{self:  (name$ | async) === item.name}" >
+      <span *ngIf="(name$ | async) !== item.name" >{{item.name}}：</span><span>{{item.message}}</span>
+      <img #loadImage [src]="'/assets/load.png?v=' + i " alt (load)="scrollToBottom(listBox)" />
+    </div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label class="_benSend">發送訊息</mat-label>
+    <button type="button" mat-icon-button matSuffix matTooltip="點擊以發送訊息"
+      (click)="btnSendMessage(inputSendMessage.value);inputSendMessage.value = '';">
+      <mat-icon>send</mat-icon>
+    </button>
+    <textarea #inputSendMessage matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2"
+      cdkAutosizeMaxRows="3" placeholder="發送訊息"></textarea>
+  </mat-form-field>
+</div>
