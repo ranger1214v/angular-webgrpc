@@ -32,6 +32,7 @@ message Log {
   string action = 2;
   string label = 3;
   string value = 4;
+  string sessionid = 5;
 }
 
 

@@ -114,6 +114,9 @@ export class Log extends jspb.Message {
   getValue(): string;
   setValue(value: string): Log;
 
+  getSessionid(): string;
+  setSessionid(value: string): Log;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Log.AsObject;
   static toObject(includeInstance: boolean, msg: Log): Log.AsObject;
@@ -128,6 +131,7 @@ export namespace Log {
     action: string,
     label: string,
     value: string,
+    sessionid: string,
   }
 }
 

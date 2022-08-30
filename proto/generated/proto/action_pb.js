@@ -898,7 +898,8 @@ proto.AiiiGRPC.Log.toObject = function(includeInstance, msg) {
     category: jspb.Message.getFieldWithDefault(msg, 1, ""),
     action: jspb.Message.getFieldWithDefault(msg, 2, ""),
     label: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    value: jspb.Message.getFieldWithDefault(msg, 4, "")
+    value: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    sessionid: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -950,6 +951,10 @@ proto.AiiiGRPC.Log.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setValue(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionid(value);
       break;
     default:
       reader.skipField();
@@ -1005,6 +1010,13 @@ proto.AiiiGRPC.Log.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getSessionid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -1080,6 +1092,24 @@ proto.AiiiGRPC.Log.prototype.getValue = function() {
  */
 proto.AiiiGRPC.Log.prototype.setValue = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string sessionid = 5;
+ * @return {string}
+ */
+proto.AiiiGRPC.Log.prototype.getSessionid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AiiiGRPC.Log} returns this
+ */
+proto.AiiiGRPC.Log.prototype.setSessionid = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

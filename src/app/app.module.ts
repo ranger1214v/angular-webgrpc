@@ -21,8 +21,8 @@ import { RouterModule } from '@angular/router';
       { path: 'server-streaming', loadChildren: () => import('./pages/server-streaming/server-streaming.module').then(m => m.ServerStreamingModule) },
       { path: 'client-streaming', loadChildren: () => import('./pages/client-streaming/client-streaming.module').then(m => m.ClientStreamingModule) },
       { path: 'bidirectional-streaming', loadChildren: () => import('./pages/bidirectional-streaming/bidirectional-streaming.module').then(m => m.BidirectionalStreamingModule) },
-      { path: '', component: AppComponent },
-      { path: '**', redirectTo: '' }
+      { path: 'unary-and-bidirectional-streaming', loadChildren: () => import('./pages/unary-and-bidirectional-streaming/unary-and-bidirectional-streaming.module').then(m => m.UnaryAndBidirectionalStreamingModule) },
+      { path: '**', redirectTo: 'unary-and-bidirectional-streaming' }
     ], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],

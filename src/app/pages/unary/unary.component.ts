@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Member } from 'proto/generated/proto/action_pb';
 import { ToDoServiceClient } from 'proto/generated/proto/action_pb_service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-unary',
@@ -10,8 +11,8 @@ import { ToDoServiceClient } from 'proto/generated/proto/action_pb_service';
 })
 export class UnaryComponent implements OnInit {
 
-  public clientWeb = new ToDoServiceClient('https://node-grpc-envoy-dnz3lqp74q-de.a.run.app');
-  public memberList = ['ranger', 'mike', 'jeff', 'jimmy', 'ghost'];
+  public clientWeb = new ToDoServiceClient(environment.envoySettings.prodUrl);
+  public memberList = ['米奇', '米妮', '唐老鴨', '小飛象', '丁丁', '迪西', '拉拉', '小波', '努努', '阿飄'];
 
   public name = '';
   public type = 0;
