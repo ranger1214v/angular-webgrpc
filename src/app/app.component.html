@@ -1,10 +1,27 @@
 <div class="container mx-auto">
   <div class="p-2">
-    <button class="mx-1" mat-raised-button [routerLink]="'unary'">unary</button>
-    <button class="mx-1" mat-raised-button [routerLink]="'server-streaming'">server-streaming</button>
-    <button class="mx-1" mat-raised-button [routerLink]="'client-streaming'">client-streaming(尚未支援)</button>
-    <button class="mx-1" mat-raised-button [routerLink]="'bidirectional-streaming'">bidirectional-streaming(尚未支援,僅 server > client 有作用, client > server 一連線即會中斷)</button>
-    <button class="mx-1" mat-raised-button [routerLink]="'unary-and-bidirectional-streaming'">unary 及 bidirectional-streaming 實現多人聊天室</button>
+
+    <mat-form-field class="w-100" >
+      <mat-label>RPC mode</mat-label>
+      <mat-select #select placeholder="RPC mode" [(ngModel)]="selectedRoute" (selectionChange)="changeRoute()" >
+        <mat-option value="unary">
+          unary
+        </mat-option>
+        <mat-option value="server-streaming">
+          server-streaming
+        </mat-option>
+        <mat-option value="client-streaming">
+          client-streaming (尚未支援)
+        </mat-option>
+        <mat-option value="bidirectional-streaming">
+          bidirectional-streaming(尚未支援,僅 server > client 有作用, client > server 一連線即會中斷)
+        </mat-option>
+        <mat-option value="unary-and-bidirectional-streaming">
+          unary-and-bidirectional-streaming
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </div>
   <div class="p-2">
     <router-outlet></router-outlet>
